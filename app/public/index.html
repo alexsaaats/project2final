@@ -216,15 +216,19 @@
 	          updateUrlsTable();
               $('.segment').dimmer('hide');
 			});
+
 	      $('.segment').dimmer('show');
-	   });
+		});
 
 		$("#getscreenshots").on("click", function(event) {
 	      event.preventDefault();
 	      $.getJSON( "/api/getscreenshots", function( data ) {
-  			console.log(data);
-			});
-	   });
+              updateUrlsTable();
+              $('.segment').dimmer('hide');
+	      });
+
+	      $('.segment').dimmer('show');
+        });
 
 		$("#learnmore").on("click", function(event) {
 	      $('.ui.basic.modal')

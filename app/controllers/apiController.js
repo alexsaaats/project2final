@@ -20,9 +20,10 @@ module.exports = function(app) {
   });
 
   app.get("/api/getscreenshots", function(req, res) {
-    //res.json(waitListData);
-    console.log(runscreenshots);
-    console.log("You have hit the /api/getscreenshots endpiont. PLEASE TRY AGAIN. ")
+      runscreenshots(() => {
+        res.json('done');
+      });
+      console.log("You have hit the /api/getscreenshots endpiont. PLEASE TRY AGAIN. ")
   });
 
   app.get("/api/checkstatus", function(req, res) {

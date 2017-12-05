@@ -4,7 +4,7 @@ const fs = require('fs');
 const path = require('path');
 const basename  = path.basename(__filename);
 const Sequelize = require('sequelize');
-const sequelize = new Sequelize('saaatsmini', 'ztf5quazay6c10ph', ' c5o0e7d4swrxy8y5', {
+const sequelize = new Sequelize('bugnwgx4c29bnjuf', 'ztf5quazay6c10ph', 'c5o0e7d4swrxy8y5', {
   host: 'k3xio06abqa902qt.cbetxkdyhwsb.us-east-1.rds.amazonaws.com',
   dialect: 'mysql',
   pool: {

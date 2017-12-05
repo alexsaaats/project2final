@@ -66,7 +66,6 @@ function getstatus() {
 //FUNCTION -- CHECK STATUS CODES -- NOLOOP ---------------------------------------
 
 function loopArray(arr, callback) {
-    console.log(x);
 
     LogSaveStatusCode(arr[x],function(){
         // set x to next item
@@ -76,7 +75,6 @@ function loopArray(arr, callback) {
         if(x < arr.length) {
             loopArray(arr, callback);
         }    else {
-            	console.log('DONE CHECK STaTUS');
             callback();
             }
         

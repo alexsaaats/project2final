@@ -11,18 +11,26 @@ var pathname = 'test';
 
 var urllist = [];
 var newlist = [];
+var x = 0;
 
-//GET DB URL LIST ----------------------
+module.exports = function(callback){
+    var newlist = [];
+    var x = 0;
 
-siteURL.findAll({}).then(results => {
 
-    urllist = results;
-    var count = urllist.length;
-    console.log("COUNT: " + count);
-    if(count)
-        loopArray(urllist);
-    //console.log(urllist);
-});
+    //GET DB URL LIST ----------------------
+
+    siteURL.findAll({}).then(results => {
+
+        urllist = results;
+        var count = urllist.length;
+        console.log("COUNT: " + count);
+        if(count)
+            loopArray(urllist, callback);
+        //console.log(urllist);
+    });
+
+};
 
 
 
@@ -108,8 +116,7 @@ request.get('https://screen.rip/capture?token=' + token + '&url=' + pageurl, fun
 });
 */
 
-var x = 0;
-function loopArray(arr) { 
+function loopArray(arr, callback) {
 
     LogSaveStatusCode(arr[x],function(){
         // set x to next item
@@ -118,9 +125,10 @@ function loopArray(arr) {
 
         // any more items in array? continue loop
         if(x < arr.length) {
-            loopArray(arr);   
+            loopArray(arr, callback);
         }    else {
             	console.log(newlist);
+                callback();
             }
         
     }); 
@@ -143,13 +151,9 @@ function LogSaveStatusCode (msg,callback) {
 		    //console.log(curcount);
 			    base64Img.img(data, './app/public/screenshots', pathname, function(err, filepath) {
 			    console.log('FILEPATH: ' + filepath)
-			    siteURL.update({screenshotPath: filepath,}, {where: {id: curcount } });
+			    siteURL.update({screenshotPath: filepath,}, {where: {id: curcount } }).then(callback);
 			    });
 			}
 		});
-	  
-
-    // do callback when ready
-    callback();
 };
 
