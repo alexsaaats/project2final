@@ -14,16 +14,15 @@ var newlist = [];
 var x = 0;
 
 module.exports = function(callback){
-    var newlist = [];
-    var x = 0;
-
-
     //GET DB URL LIST ----------------------
 
     siteURL.findAll({}).then(results => {
 
         urllist = results;
         var count = urllist.length;
+        newlist = [];
+        x = 0;
+
         console.log("COUNT: " + count);
         if(count)
             loopArray(urllist, callback);
@@ -117,7 +116,7 @@ request.get('https://screen.rip/capture?token=' + token + '&url=' + pageurl, fun
 */
 
 function loopArray(arr, callback) {
-
+console.log(x);
     LogSaveStatusCode(arr[x],function(){
         // set x to next item
         x++;
