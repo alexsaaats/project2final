@@ -37,6 +37,11 @@ app.get("/", function(req, res) {
   console.log("homepage loaded");
 });
 
+app.get("/sitemap", function(req, res) {
+  res.sendFile(path.join(__dirname, "/sitemap.xml"));
+  console.log("sitemap downloaded");
+});
+
 /*
 app.post("/newsitemap", function (req, res) {
     console.log(req.body.baseurl)

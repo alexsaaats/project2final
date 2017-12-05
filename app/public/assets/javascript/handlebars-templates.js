@@ -40,7 +40,7 @@ $( document ).ready(function() {
             var sitenamedata = sitenamecompiled(context);
 
             // Add the compiled html to the page
-            $('.currentname').html("<h2>Current sitemap: " + sitenamedata + "</h2><br/>");
+            $('.currentname').html("<h2>Current sitemap: " + sitenamedata + "</h2><a href='/sitemap'>Download Sitemap</a><br/><br/>");
 
 
 
